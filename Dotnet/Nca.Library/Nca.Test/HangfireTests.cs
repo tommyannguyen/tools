@@ -56,7 +56,9 @@ namespace Tests
         [Test]
         public void Test1()
         {
-            var jobId = BackgroundJob.Enqueue<MyHangfireJobs>(jobs => jobs.SendGetRequest());
+            var jobId = BackgroundJob.Enqueue<MyHangfireJobs>(jobs => 
+                jobs.SendGetRequest()
+                );
             Trace.WriteLine("ten ten ten");
             Assert.True(true);
 
@@ -117,7 +119,7 @@ namespace Tests
             mqHost.RegisterHandler<Hello>(m =>
             {
                 Trace.WriteLine("Received 1: " + m.GetBody());
-                return null;
+                return new HelloResponse() { Result = "ten ten ten"};
             });
             //Client - Process Response:
             mqHost.RegisterHandler<HelloResponse>(m =>
@@ -130,7 +132,6 @@ namespace Tests
             //Producer - Start publishing messages:
             var mqClient = mqHost.CreateMessageQueueClient();
             mqClient.Publish(new Hello { Name = "ServiceStack" });
-
 
             Thread.Sleep(10000);
             Assert.True(true);
