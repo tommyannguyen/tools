@@ -43,7 +43,7 @@ namespace Nca.WebApp.Controllers
                 var tokenEndpoint = $"https://login.microsoftonline.com/{tenantId}/oauth2/token";
                 var accept = "application/json";
                 var userName = "tommy.an.nguyen@gmail.com";
-                var password = "Bebe1234156";
+                var password = "***";
                 var clientId = "";
                 client.DefaultRequestHeaders.Add("Accept", accept);
 
