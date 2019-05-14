@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nca.Library\Nca.Library.csproj" />
+    <ProjectReference Include="..\Nca.WebApp\Nca.WebApp.csproj" />
   </ItemGroup>
 
 </Project>
