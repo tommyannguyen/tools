@@ -15,37 +15,25 @@ namespace Nca.Library.Services
 {
     public class EmbedService : IEmbedService
     {
-        private static readonly string ApiUrl = ConfigurationManager.AppSettings["apiUrl"];
-        private static readonly string WorkspaceId = ConfigurationManager.AppSettings["workspaceId"];
-        private static readonly string AuthorityUrl = ConfigurationManager.AppSettings["authorityUrl"];
-        private static readonly string ResourceUrl = ConfigurationManager.AppSettings["resourceUrl"];
-        private static readonly string ApplicationId = ConfigurationManager.AppSettings["applicationId"];
+        private readonly BIConfiguration _configuration;
 
-        private static readonly string ReportId = ConfigurationManager.AppSettings["reportId"];
-
-        private static readonly string AuthenticationType = ConfigurationManager.AppSettings["AuthenticationType"];
-        private static readonly NameValueCollection sectionConfig = ConfigurationManager.GetSection(AuthenticationType) as NameValueCollection;
-        private static readonly string ApplicationSecret = sectionConfig["applicationSecret"];
-        private static readonly string Tenant = sectionConfig["tenant"];
-        private static readonly string Username = sectionConfig["pbiUsername"];
-        private static readonly string Password = sectionConfig["pbiPassword"];
-
-        public EmbedService()
+        public EmbedService(BIConfiguration biConfiguration)
         {
+            this._configuration = biConfiguration;
         }
 
         public async Task<IEnumerable<ReportInfo>> GetReports()
         {
-            using (var client = new PowerBIClient(new Uri(ApiUrl), GetTokenCredentials()))
+            using (var client = new PowerBIClient(MappingReportApiUrl(), GetTokenCredentials()))
             {
-                var reports = await client.Reports.GetReportsInGroupAsync(WorkspaceId);
+                var reports = await client.Reports.GetReportsInGroupAsync(_configuration.WorkspaceId);
                 return reports.Value.Select(r => ConvertReportInfo(r));
             }
         }
 
         public async Task<EmbedReport> GetEmbedReport(ReportId reportId)
         {
-            using (var client = new PowerBIClient(new Uri(ApiUrl), GetTokenCredentials()))
+            using (var client = new PowerBIClient(MappingReportApiUrl(reportId), GetTokenCredentials()))
             {
                 var report = await client.Reports.GetReportAsync(reportId.Id);              
                 return ConvertEmbedReport(report, await GenerateTotkenAsync(client, report));
@@ -64,7 +52,7 @@ namespace Nca.Library.Services
         private async Task<EmbedToken> GenerateTotkenAsync(IPowerBIClient client ,Report report)
         {
             GenerateTokenRequest generateTokenRequestParameters = new GenerateTokenRequest(accessLevel: "view");
-            return await client.Reports.GenerateTokenInGroupAsync(WorkspaceId, report.Id, generateTokenRequestParameters);
+            return await client.Reports.GenerateTokenInGroupAsync(_configuration.WorkspaceId, report.Id, generateTokenRequestParameters);
         }
         private EmbedReport ConvertEmbedReport(Report report, EmbedToken embedToken)
         {
@@ -96,6 +84,11 @@ namespace Nca.Library.Services
                     }
             }
             return new List<ReportGroup>();
+        }
+
+        public Uri MappingReportApiUrl(ReportId reportId = null)
+        {
+            return new Uri(_configuration.ApiUrl);
         }
     }
 }
