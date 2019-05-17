@@ -1,5 +1,18 @@
 @import '../@theme/styles/themes';
 
+:host ::ng-deep {
+  @for $i from 1 through 8 {
+    .report-icon-#{$i} {
+      background-image: url("../../assets/images/icon#{$i}.png");
+      width: 35px !important;
+      height: 35px !important;
+      background-repeat: no-repeat;
+      background-size: 35px 35px;
+      margin: 0 14px 0 14px !important;
+    }
+  }
+}
+
 @include nb-install-component() {
   /deep/ router-outlet + * {
     display: block;
@@ -15,4 +28,6 @@
       }
     }
   }
+
+ 
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Nca.Web.Spa
 {
@@ -62,6 +63,7 @@ namespace Nca.Web.Spa
 
                 if (env.IsDevelopment())
                 {
+                    spa.Options.StartupTimeout = new TimeSpan(0, 5, 00);
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
