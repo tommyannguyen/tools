@@ -16,8 +16,8 @@ namespace Nca.Library.Models
 
         public readonly string ReportId = ConfigurationManager.AppSettings["reportId"];
 
-        public readonly string AuthenticationType = ConfigurationManager.AppSettings["AuthenticationType"];
-        public readonly NameValueCollection sectionConfig = ConfigurationManager.GetSection(AuthenticationType) as NameValueCollection;
+        public static readonly string AuthenticationType = ConfigurationManager.AppSettings["AuthenticationType"];
+        public static readonly NameValueCollection sectionConfig = ConfigurationManager.GetSection(AuthenticationType) as NameValueCollection;
         public readonly string ApplicationSecret = sectionConfig["applicationSecret"];
         public readonly string Tenant = sectionConfig["tenant"];
         public readonly string Username = sectionConfig["pbiUsername"];
