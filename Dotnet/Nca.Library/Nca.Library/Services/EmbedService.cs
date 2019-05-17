@@ -39,27 +39,48 @@ namespace Nca.Library.Services
             using (var client = new PowerBIClient(new Uri(ApiUrl), GetTokenCredentials()))
             {
                 var reports = await client.Reports.GetReportsInGroupAsync(WorkspaceId);
-                return reports.Value.Select(r => Convert(r));
+                return reports.Value.Select(r => ConvertReportInfo(r));
             }
         }
 
-        public Task<EmbedReport> GetEmbedReport(ReportId reportId)
+        public async Task<EmbedReport> GetEmbedReport(ReportId reportId)
         {
-            throw new NotImplementedException();
+            using (var client = new PowerBIClient(new Uri(ApiUrl), GetTokenCredentials()))
+            {
+                var report = await client.Reports.GetReportAsync(reportId.Id);              
+                return ConvertEmbedReport(report, await GenerateTotkenAsync(client, report));
+            }
         }
+        
+        public Task<EmbedReport> GetEmbedReport(ReportGroup reportGroup)
+        {
+            return GetEmbedReport(reportGroup.ReportId);
+        }
+
         private TokenCredentials GetTokenCredentials()
         {
             return null;
         }
-        public Task<EmbedReport> GetEmbedReport(ReportGroup reportGroup)
+        private async Task<EmbedToken> GenerateTotkenAsync(IPowerBIClient client ,Report report)
         {
-            throw new NotImplementedException();
+            GenerateTokenRequest generateTokenRequestParameters = new GenerateTokenRequest(accessLevel: "view");
+            return await client.Reports.GenerateTokenInGroupAsync(WorkspaceId, report.Id, generateTokenRequestParameters);
         }
-
-        private ReportInfo Convert(Report report)
+        private EmbedReport ConvertEmbedReport(Report report, EmbedToken embedToken)
+        {
+            return new EmbedReport()
+            {
+                Id = new ReportId(report.Id),
+                EmbedToken = embedToken,
+                EmbedUrl = report.EmbedUrl
+            };
+        }
+        private ReportInfo ConvertReportInfo(Report report)
         {
             return new ReportInfo(new ReportId(report.Id), MappingReportGroups(report));
         }
+        
+        //TODO :: Database mapping
         private IEnumerable<ReportGroup> MappingReportGroups(Report report)
         {
             switch (report.Name)
