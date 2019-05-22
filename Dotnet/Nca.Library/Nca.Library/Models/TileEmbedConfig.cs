@@ -1,6 +1,6 @@
 ﻿namespace Nca.Library.Models
 {
-    public class TileEmbedConfig : EmbedConfig
+    public class TileEmbedConfig 
     {
         public string DashboardId { get; set; }
     }
