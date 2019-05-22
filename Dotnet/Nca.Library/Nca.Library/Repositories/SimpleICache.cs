@@ -7,7 +7,7 @@ namespace Nca.Library.Repositories
     public class SimpleICache<T> : Interfaces.ICache<T>
     {
         private ICacheManager<T> _cacheManager;
-        private TimeSpan _MagicTimeOut = TimeSpan.FromMinutes(30);
+        private TimeSpan _MagicTimeOut = TimeSpan.FromMinutes(10);
         public SimpleICache()
         {
             _cacheManager = CacheFactory.Build<T>(settings =>
