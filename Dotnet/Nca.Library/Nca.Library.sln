@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Library", "Nca.Library\Nca.Library.csproj", "{9BA8ECB2-5D16-47F4-8DC5-59480669A560}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Test", "Nca.Test\Nca.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.WebApp", "Nca.WebApp\Nca.WebApp.csproj", "{917644CC-91EC-4DFE-9D00-9A5BB0C4A542}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nca.Web.Spa", "Nca.Web.Spa\Nca.Web.Spa.csproj", "{7FB453DF-52C1-42A7-8743-0B45F2DA1725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Web.Spa", "Nca.Web.Spa\Nca.Web.Spa.csproj", "{7FB453DF-52C1-42A7-8743-0B45F2DA1725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nca.MigrationTool", "Nca.MigrationTool\Nca.MigrationTool.csproj", "{7037C047-32D5-4F35-9F0C-0E70BFED1E7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7FB453DF-52C1-42A7-8743-0B45F2DA1725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB453DF-52C1-42A7-8743-0B45F2DA1725}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB453DF-52C1-42A7-8743-0B45F2DA1725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7037C047-32D5-4F35-9F0C-0E70BFED1E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7037C047-32D5-4F35-9F0C-0E70BFED1E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7037C047-32D5-4F35-9F0C-0E70BFED1E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7037C047-32D5-4F35-9F0C-0E70BFED1E7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
