@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,7 +43,11 @@ namespace Nca.Web.Spa
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>((builder) => {
+                builder.UseSqlite(@"Data Source=App_Data\\DB.sqlite;", option => {
+                    option.MigrationsAssembly("Nca.Web.Spa");
+                });
+            });
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -111,6 +116,23 @@ namespace Nca.Web.Spa
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            MigrationsDb(app);
+        }
+        private static void MigrationsDb(IApplicationBuilder app)
+        {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                {
+                    serviceScope.ServiceProvider.GetService<ApplicationDbContext>().Database.Migrate();
+                }
+            }
+            catch (Exception ex)
+            {
+                //Log here
+            }
         }
     }
+
 }
