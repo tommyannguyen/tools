@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nca.Library.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace Nca.Library.Interfaces

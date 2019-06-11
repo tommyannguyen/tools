@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nca.Library.Interfaces
+namespace Nca.Library.Models
 {
     public class CacheItem<T>
     {
