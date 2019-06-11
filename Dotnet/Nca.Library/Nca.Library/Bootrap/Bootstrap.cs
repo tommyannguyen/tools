@@ -17,8 +17,10 @@ namespace Nca.Library.Bootrap
         private static string SqlConnectionString = "Data Source=App_Data\\DB.sqlite;";
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDbContext>((builder) => {
-                builder.UseSqlite(SqlConnectionString, option => {
+            services.AddDbContext<ApplicationDbContext>((builder) =>
+            {
+                builder.UseSqlite(SqlConnectionString, option =>
+                {
                     option.MigrationsAssembly("Nca.Web.Spa");
                 });
             });
@@ -27,7 +29,8 @@ namespace Nca.Library.Bootrap
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.Configure<EmailSettings>((emailSetting) => {
+            services.Configure<EmailSettings>((emailSetting) =>
+            {
                 emailSetting.MailPort = int.Parse(configuration["EmailSettings:MailPort"]);
                 emailSetting.MailServer = configuration["EmailSettings:MailServer"];
                 emailSetting.SenderName = configuration["EmailSettings:SenderName"];
