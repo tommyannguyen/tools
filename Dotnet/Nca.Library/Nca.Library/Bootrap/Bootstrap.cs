@@ -2,6 +2,7 @@
 using Hangfire.SQLite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Nca.Library.Models;
 using Nca.Library.Models.Repositories;
 using Nca.Library.Repositories.Database;
+using System.Security.Principal;
 
 namespace Nca.Library.Bootrap
 {
@@ -52,6 +54,11 @@ namespace Nca.Library.Bootrap
             });
 
             services.AddTransient<EmailSenderJob>();
+
+            //Regiser current IPrincipal
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IPrincipal>(
+                provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
         }
     }
 }
