@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Nca.Library.Interfaces.Reporting;
 using Nca.Library.Models;
+using Nca.Library.Models.Reporting;
 using Nca.Library.Models.Repositories;
 using Nca.Library.Repositories.Database;
 using System.Security.Principal;
@@ -38,6 +40,12 @@ namespace Nca.Library.Bootrap
                 emailSetting.SenderName = configuration["EmailSettings:SenderName"];
                 emailSetting.Sender = configuration["EmailSettings:Sender"];
                 emailSetting.Password = configuration["EmailSettings:Password"];
+            });
+            services.AddSingleton<IReportingSettings>(new ReportingSettings {
+                HeaderTemplate = "header.html",
+                FooterTemplate = "footer.html",
+                OutPutDirectory = "Data\\Temp",
+                TempPathDirectory = "Data\\Templates"
             });
             RegisterJobs(services);
         }

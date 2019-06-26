@@ -5,5 +5,6 @@
         IReportingModel CreateReportingModel(string headerTemplate, string footerTemplate, object data);
         IHtmlRenderTask CreateCleanupHtmlRenderTask(IReportContext reportContext);
         IHtmlRenderTask CreateFluidHtmlRenderTask(IReportContext reportContext);
+        IReportContext CreateReportContext(string tempPath, string templatePath);
     }
 }
