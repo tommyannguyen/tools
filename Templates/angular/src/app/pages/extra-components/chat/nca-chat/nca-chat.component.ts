@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
 
-import { ChatService } from './chat.service';
-
 @Component({
-  selector: 'ngx-chat',
-  templateUrl: 'chat.component.html',
-  styleUrls: ['chat.component.scss'],
-  providers: [ChatService],
+  selector: 'nca-chat',
+  templateUrl: 'nca-chat.component.html',
+  styleUrls: ['nca-chat.component.scss'],
 })
-export class ChatComponent {
+export class NcaChatComponent {
 
-  messages: any[];
+  messages: any[] = [];
 
-  constructor(protected chatService: ChatService) {
-    this.messages = this.chatService.loadMessages();
+  constructor() {
   }
 
   sendMessage(event: any) {
@@ -36,10 +32,7 @@ export class ChatComponent {
         avatar: 'https://i.gifer.com/no.gif',
       },
     });
-    const botReply = this.chatService.reply(event.message);
-    if (botReply) {
-      setTimeout(() => { this.messages.push(botReply); }, 500);
-    }
+    
   }
 
   pastePicture(event: any) {
@@ -76,7 +69,5 @@ export class ChatComponent {
         },
       });
     }
-
-    
   }
 }

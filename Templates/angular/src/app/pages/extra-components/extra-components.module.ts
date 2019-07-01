@@ -36,6 +36,7 @@ import { CalendarKitMonthCellComponent } from './calendar-kit/month-cell/month-c
 
 // service
 import { NewsService } from './services/news.service';
+import { NcaChatComponent } from './chat/nca-chat/nca-chat.component';
 
 const COMPONENTS = [
   ExtraComponentsComponent,
@@ -64,6 +65,7 @@ const COMPONENTS = [
   NebularSelectComponent,
   CalendarKitFullCalendarShowcaseComponent,
   CalendarKitMonthCellComponent,
+  NcaChatComponent,
 ];
 
 const SERVICES = [
