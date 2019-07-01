@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { ActivatedRouteSnapshot, ResolveEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-
 @Injectable()
 export class ApplicationInsightsService {
     private routerSubscription: Subscription;
@@ -15,18 +14,20 @@ export class ApplicationInsightsService {
     });
 
     constructor(private router: Router) {
-        this.appInsights.loadAppInsights();
-        this.routerSubscription = this.router
-                                    .events
-                                    .pipe(
-                                        filter(event => event instanceof ResolveEnd)
-                                        )
-                                    .subscribe((event: ResolveEnd) => {
-                                        const activatedComponent = this.getActivatedComponent(event.state.root);
-                                        if (activatedComponent) {
-                                            this.logPageView(`${activatedComponent.name} ${this.getRouteTemplate(event.state.root)}`, event.urlAfterRedirects);
-                                        }
-                                });
+        if (!isDevMode()) {
+            this.appInsights.loadAppInsights();
+            this.routerSubscription = this.router
+                .events
+                .pipe(
+                    filter(event => event instanceof ResolveEnd)
+                )
+                .subscribe((event: ResolveEnd) => {
+                    const activatedComponent = this.getActivatedComponent(event.state.root);
+                    if (activatedComponent) {
+                        this.logPageView(`${activatedComponent.name} ${this.getRouteTemplate(event.state.root)}`, event.urlAfterRedirects);
+                    }
+                });
+        }
     }
 
     setUserId(userId: string) {
