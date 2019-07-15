@@ -1,5 +1,4 @@
 ﻿using Hangfire;
-using Hangfire.SQLite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,12 +17,13 @@ namespace Nca.Library.Bootrap
 {
     public static class Bootstrap
     {
-        private static string SqlConnectionString = "Data Source=App_Data\\DB.sqlite;";
+        public static string SqlConnectionString = "Server=PC102;Database=TestDB;Trusted_Connection=True;";
+        //private static string SqlConnectionString = "Data Source=App_Data\\DB.sqlite;";
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>((builder) =>
             {
-                builder.UseSqlite(SqlConnectionString, option =>
+                builder.UseSqlServer(SqlConnectionString, option =>
                 {
                     option.MigrationsAssembly("Nca.Web.Spa");
                 });
@@ -51,14 +51,14 @@ namespace Nca.Library.Bootrap
         }
         public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
+           
         }
 
         private static void RegisterJobs(IServiceCollection services)
         {
             services.AddHangfire(configuration =>
             {
-                configuration.UseSQLiteStorage(SqlConnectionString);
+                configuration.UseSqlServerStorage(SqlConnectionString);
             });
 
             services.AddTransient<EmailSenderJob>();
