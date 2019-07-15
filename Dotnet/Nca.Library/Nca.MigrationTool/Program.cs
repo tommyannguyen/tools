@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Nca.Library.Repositories.Database;
 using System;
+using System.Threading.Tasks;
 
 namespace Nca.MigrationTool
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var connectionstring = "Server=PC102;Database=TestDB;Trusted_Connection=True;";
 
@@ -18,6 +18,9 @@ namespace Nca.MigrationTool
 
             dbContext.Database.Migrate();
 
+
+            var initData = new DBContextInit(dbContext);
+            await initData.RunAsync();
             Console.WriteLine("Done !...");
             Console.ReadKey();
         }
