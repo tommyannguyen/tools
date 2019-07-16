@@ -20,4 +20,10 @@
     <ProjectReference Include="..\Nca.WebApp\Nca.WebApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\test.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
