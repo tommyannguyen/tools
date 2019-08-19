@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nca.Library\Nca.Library.csproj" />
+    <ProjectReference Include="..\Nca.Scrape\Nca.Scrape.csproj" />
     <ProjectReference Include="..\Nca.WebApp\Nca.WebApp.csproj" />
   </ItemGroup>
 
