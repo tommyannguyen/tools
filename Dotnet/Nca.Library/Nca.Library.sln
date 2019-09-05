@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A93C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReactMaterialAdmin", "ReactMaterialAdmin", "{338C6DD7-84A1-481A-BE33-158BBA064985}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nca.Web.React", "Nca.Web.React\Nca.Web.React.csproj", "{A7583774-E6AC-4AB8-A892-027CF22A990A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Web.React", "Nca.Web.React\Nca.Web.React.csproj", "{A7583774-E6AC-4AB8-A892-027CF22A990A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nca.Web.Angular", "Nca.Web.Angular\Nca.Web.Angular.csproj", "{AB71E00C-182A-4A8B-A8D8-1639B69D041B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB71E00C-182A-4A8B-A8D8-1639B69D041B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB71E00C-182A-4A8B-A8D8-1639B69D041B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB71E00C-182A-4A8B-A8D8-1639B69D041B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB71E00C-182A-4A8B-A8D8-1639B69D041B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{A93C7EC5-A6C5-464A-A413-BA5E4E51B5EE} = {7F72A9EB-D0F7-4BCD-B4C3-197ACC8D3BDF}
 		{338C6DD7-84A1-481A-BE33-158BBA064985} = {5405D98F-78CD-436C-8C6C-9895C30330C9}
 		{A7583774-E6AC-4AB8-A892-027CF22A990A} = {338C6DD7-84A1-481A-BE33-158BBA064985}
+		{AB71E00C-182A-4A8B-A8D8-1639B69D041B} = {338C6DD7-84A1-481A-BE33-158BBA064985}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE0A6B38-A271-473E-AA2D-90A78E634B43}
