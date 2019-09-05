@@ -7,13 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Library", "Nca.Library\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Test", "Nca.Test\Nca.Test.csproj", "{E60B06BD-6FFE-4C3B-8496-63A4EF5AFAB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.WebApp", "Nca.WebApp\Nca.WebApp.csproj", "{917644CC-91EC-4DFE-9D00-9A5BB0C4A542}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Web.Spa", "Nca.Web.Spa\Nca.Web.Spa.csproj", "{7FB453DF-52C1-42A7-8743-0B45F2DA1725}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.MigrationTool", "Nca.MigrationTool\Nca.MigrationTool.csproj", "{09BE248B-4A48-45D3-9BCF-FFD6C3F83B5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nca.Scrape", "Nca.Scrape\Nca.Scrape.csproj", "{DF995444-58CE-4765-8982-BB866142BE5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nca.Scrape", "Nca.Scrape\Nca.Scrape.csproj", "{DF995444-58CE-4765-8982-BB866142BE5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7F72A9EB-D0F7-4BCD-B4C3-197ACC8D3BDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fontent", "Fontent", "{5405D98F-78CD-436C-8C6C-9895C30330C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A93C7EC5-A6C5-464A-A413-BA5E4E51B5EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReactMaterialAdmin", "ReactMaterialAdmin", "{338C6DD7-84A1-481A-BE33-158BBA064985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nca.Web.React", "Nca.Web.React\Nca.Web.React.csproj", "{A7583774-E6AC-4AB8-A892-027CF22A990A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +37,6 @@ Global
 		{E60B06BD-6FFE-4C3B-8496-63A4EF5AFAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E60B06BD-6FFE-4C3B-8496-63A4EF5AFAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E60B06BD-6FFE-4C3B-8496-63A4EF5AFAB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{917644CC-91EC-4DFE-9D00-9A5BB0C4A542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{917644CC-91EC-4DFE-9D00-9A5BB0C4A542}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{917644CC-91EC-4DFE-9D00-9A5BB0C4A542}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{917644CC-91EC-4DFE-9D00-9A5BB0C4A542}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7FB453DF-52C1-42A7-8743-0B45F2DA1725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7FB453DF-52C1-42A7-8743-0B45F2DA1725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB453DF-52C1-42A7-8743-0B45F2DA1725}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,9 +49,19 @@ Global
 		{DF995444-58CE-4765-8982-BB866142BE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF995444-58CE-4765-8982-BB866142BE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF995444-58CE-4765-8982-BB866142BE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7583774-E6AC-4AB8-A892-027CF22A990A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5405D98F-78CD-436C-8C6C-9895C30330C9} = {7F72A9EB-D0F7-4BCD-B4C3-197ACC8D3BDF}
+		{A93C7EC5-A6C5-464A-A413-BA5E4E51B5EE} = {7F72A9EB-D0F7-4BCD-B4C3-197ACC8D3BDF}
+		{338C6DD7-84A1-481A-BE33-158BBA064985} = {5405D98F-78CD-436C-8C6C-9895C30330C9}
+		{A7583774-E6AC-4AB8-A892-027CF22A990A} = {338C6DD7-84A1-481A-BE33-158BBA064985}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE0A6B38-A271-473E-AA2D-90A78E634B43}
