@@ -1,10 +1,7 @@
-﻿using Nca.WebApp.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Nca.Test
@@ -44,5 +41,9 @@ namespace Nca.Test
                 Assert.True(!string.IsNullOrEmpty(tokenResult));
             }
         }
+    }
+    public class AzureAdTokenResponse
+    {
+        public string AccessToken { get; set; }
     }
 }
