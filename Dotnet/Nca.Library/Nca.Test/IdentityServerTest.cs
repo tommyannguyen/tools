@@ -18,7 +18,7 @@ namespace Tests
             var keyValues = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("username", "tommy.an.nguyen@gmail.com"),
-                new KeyValuePair<string, string>("password","Bebe1234156"),
+                new KeyValuePair<string, string>("password",""),
                 new KeyValuePair<string, string>("client_secret","6SpYSDcYvrKTxoP1lz1CHCfaL6NdcDZr"),
                 new KeyValuePair<string, string>("client_id","d5369772-3632-4dd4-8fd2-d75bfe5ea285"),
 
